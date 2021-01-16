@@ -30,3 +30,9 @@
 	path = techpack/video
 	url = https://android.googlesource.com/kernel/msm-extra/video-driver
 	branch = android-msm-redfin-4.19-android11-qpr1
+[submodule "drivers/input/touchscreen/sec_ts"]
+	path = drivers/input/touchscreen/sec_ts
+	url = https://android.googlesource.com/kernel/msm-modules/sec_touch
+[submodule "drivers/input/touchscreen/stm"]
+	path = drivers/input/touchscreen/stm
+	url = https://android.googlesource.com/kernel/msm-modules/fts_touch
