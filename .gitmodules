@@ -10,3 +10,23 @@
 	path = drivers/staging/qcacld-3.0
 	url = https://github.com/GrapheneOS/kernel_google_redbull_drivers_staging_qcacld-3.0
 	branch = 11
+[submodule "techpack/audio"]
+	path = techpack/audio
+	url = https://github.com/GrapheneOS/kernel_google_redbull_techpack_audio
+	branch = 11
+[submodule "techpack/camera"]
+	path = techpack/camera
+	url = https://android.googlesource.com/kernel/msm-extra/camera-kernel
+	branch = android-msm-redfin-4.19-android11-qpr1
+[submodule "techpack/dataipa"]
+	path = techpack/dataipa
+	url = https://android.googlesource.com/kernel/msm-extra/dataipa
+	branch = android-msm-redfin-4.19-android11-qpr1
+[submodule "techpack/display"]
+	path = techpack/display
+	url = https://android.googlesource.com/kernel/msm-extra/display-drivers
+	branch = android-msm-redfin-4.19-android11-qpr1
+[submodule "techpack/video"]
+	path = techpack/video
+	url = https://android.googlesource.com/kernel/msm-extra/video-driver
+	branch = android-msm-redfin-4.19-android11-qpr1
