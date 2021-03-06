@@ -13,6 +13,7 @@
 #include <trace/events/dfc.h>
 #include <linux/ip.h>
 #include <linux/ipv6.h>
+#include <linux/icmpv6.h>
 #include <linux/alarmtimer.h>
 
 #define NLMSG_FLOW_ACTIVATE 1
