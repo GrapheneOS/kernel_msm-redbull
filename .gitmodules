@@ -6,7 +6,7 @@
 	url = https://github.com/GrapheneOS/kernel_google_redbull_drivers_staging_qcacld-3.0
 [submodule "drivers/staging/qca-wifi-host-cmn"]
 	path = drivers/staging/qca-wifi-host-cmn
-	url = https://android.googlesource.com/kernel/msm-modules/qca-wfi-host-cmn
+	url = https://github.com/GrapheneOS/kernel_google_redbull_drivers_staging_qca-wifi-host-cmn
 [submodule "techpack/camera"]
 	path = techpack/camera
 	url = https://android.googlesource.com/kernel/msm-extra/camera-kernel
