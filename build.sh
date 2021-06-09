@@ -34,18 +34,7 @@ chrt -bp 0 $$
 make \
     O=out \
     ARCH=arm64 \
-    CC=clang \
-    LD=ld.lld \
-    AR=llvm-ar \
-    NM=llvm-nm \
-    OBJCOPY=llvm-objcopy \
-    OBJDUMP=llvm-objdump \
-    READELF=llvm-readelf \
-    OBJSIZE=llvm-size \
-    STRIP=llvm-strip \
-    HOSTCC=clang \
-    HOSTCXX=clang++ \
-    HOSTLD=ld.lld \
+    LLVM=1 \
     CLANG_TRIPLE=aarch64-linux-gnu- \
     CROSS_COMPILE=aarch64-linux-android- \
     CROSS_COMPILE_COMPAT=arm-linux-androideabi- \
@@ -54,18 +43,7 @@ make \
 make -j$(nproc) \
     O=out \
     ARCH=arm64 \
-    CC=clang \
-    LD=ld.lld \
-    AR=llvm-ar \
-    NM=llvm-nm \
-    OBJCOPY=llvm-objcopy \
-    OBJDUMP=llvm-objdump \
-    READELF=llvm-readelf \
-    OBJSIZE=llvm-size \
-    STRIP=llvm-strip \
-    HOSTCC=clang \
-    HOSTCXX=clang++ \
-    HOSTLD=ld.lld \
+    LLVM=1 \
     CLANG_TRIPLE=aarch64-linux-gnu- \
     CROSS_COMPILE=aarch64-linux-android- \
     CROSS_COMPILE_COMPAT=arm-linux-androideabi-
