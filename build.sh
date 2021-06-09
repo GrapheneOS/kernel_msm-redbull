@@ -16,8 +16,7 @@ ROOT_DIR=$(realpath ../../..)
 PATH="$ROOT_DIR/prebuilts/build-tools/linux-x86/bin:$PATH"
 PATH="$ROOT_DIR/prebuilts/build-tools/path/linux-x86:$PATH"
 PATH="$ROOT_DIR/kernel/prebuilts/build-tools/linux-x86/bin:$PATH"
-PATH="$ROOT_DIR/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:$PATH"
-PATH="$ROOT_DIR/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:$PATH"
+PATH="$ROOT_DIR/prebuilts/gas/linux-x86:$PATH"
 PATH="$ROOT_DIR/prebuilts/clang/host/linux-x86/clang-r383902/bin:$PATH"
 PATH="$ROOT_DIR/prebuilts/misc/linux-x86/libufdt:$PATH"
 export LD_LIBRARY_PATH="$ROOT_DIR/prebuilts/clang/host/linux-x86/clang-r383902/lib64:$LD_LIBRARY_PATH"
@@ -36,8 +35,8 @@ make \
     ARCH=arm64 \
     LLVM=1 \
     CLANG_TRIPLE=aarch64-linux-gnu- \
-    CROSS_COMPILE=aarch64-linux-android- \
-    CROSS_COMPILE_COMPAT=arm-linux-androideabi- \
+    CROSS_COMPILE=aarch64-linux-gnu- \
+    CROSS_COMPILE_COMPAT=arm-linux-gnueabi- \
     ${DEVICE}_defconfig
 
 make -j$(nproc) \
@@ -45,8 +44,8 @@ make -j$(nproc) \
     ARCH=arm64 \
     LLVM=1 \
     CLANG_TRIPLE=aarch64-linux-gnu- \
-    CROSS_COMPILE=aarch64-linux-android- \
-    CROSS_COMPILE_COMPAT=arm-linux-androideabi-
+    CROSS_COMPILE=aarch64-linux-gnu- \
+    CROSS_COMPILE_COMPAT=arm-linux-gnueabi-
 
 cp out/arch/arm64/boot/{dtbo.img,Image.lz4} "$ROOT_DIR/device/google/${DEVICE}-kernel"
 cp out/arch/arm64/boot/dts/google/qcom-base/lito.dtb "$ROOT_DIR/device/google/${DEVICE}-kernel"
