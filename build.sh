@@ -45,14 +45,24 @@ make -j$(nproc) \
     CROSS_COMPILE=aarch64-linux-gnu- \
     CROSS_COMPILE_COMPAT=arm-linux-gnueabi-
 
+make -j$(nproc) \
+    O=out \
+    ARCH=arm64 \
+    LLVM=1 \
+    CROSS_COMPILE=aarch64-linux-gnu- \
+    CROSS_COMPILE_COMPAT=arm-linux-gnueabi- \
+    INSTALL_MOD_PATH=moduleout \
+    INSTALL_MOD_STRIP=1 \
+    modules_install
+
 cp out/arch/arm64/boot/{dtbo.img,Image.lz4} "$ROOT_DIR/device/google/${DEVICE}-kernel"
 cp out/arch/arm64/boot/dts/google/qcom-base/lito.dtb "$ROOT_DIR/device/google/${DEVICE}-kernel"
 
 echo "TODO: disable LKM, copying kernel modules. modules in device kernel repo will be deleted"
 rm -fv $ROOT_DIR/device/google/${DEVICE}-kernel/*.ko
-cd out
+cd out/moduleout/
 for i in $(find -name "*.ko"); do
-cp ${i} $ROOT_DIR/device/google/${DEVICE}-kernel/ -v
+cp ${i} $ROOT_DIR/device/google/${DEVICE}-kernel/
 done
-cp modules.order $ROOT_DIR/device/google/${DEVICE}-kernel/modules.load -v
-
+cd ..
+cp modules.order "$ROOT_DIR/device/google/${DEVICE}-kernel/modules.load"
