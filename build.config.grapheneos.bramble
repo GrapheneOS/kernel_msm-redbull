@@ -1,0 +1,44 @@
+KERNEL_DIR=private/msm-google
+BUILD_BOOT_IMG=true
+
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+DEFCONFIG=bramble_defconfig
+BUILD_INITRAMFS=1
+EXT_MODULES="
+private/msm-google-modules/wlan/qcacld-3.0
+private/msm-google-modules/touch/fts
+private/msm-google-modules/touch/sec
+"
+
+if [ -n "${BUILD_BOOT_IMG}" ]; then
+BUILD_INITRAMFS=1
+LZ4_RAMDISK=1
+MKBOOTIMG_PATH=tools/mkbootimg/mkbootimg.py
+GKI_RAMDISK_PREBUILT_BINARY=${ROOT_DIR}/prebuilts/boot-artifacts/ramdisks/ramdisk-bramble.img
+KERNEL_BINARY=Image.lz4
+BOOT_IMAGE_HEADER_VERSION=3
+BASE_ADDRESS=0x00000000
+PAGE_SIZE=4096
+KERNEL_VENDOR_CMDLINE="console=ttyMSM0,115200n8 androidboot.console=ttyMSM0 printk.devkmsg=on msm_rtb.filter=0x237 ehci-hcd.park=3 service_locator.enable=1 androidboot.memcg=1 cgroup.memory=nokmem lpm_levels.sleep_disabled=1 usbcore.autosuspend=7 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 androidboot.boot_devices=soc/1d84000.ufshc loop.max_part=7 buildvariant=userdebug snd_soc_cs35l41_i2c.async_probe=1 i2c_qcom_geni.async_probe=1 st21nfc.async_probe=1 spmi_pmic_arb.async_probe=1 ufs_qcom.async_probe=1"
+VENDOR_FSTAB=${ROOT_DIR}/prebuilts/boot-artifacts/fstabs/fstab.sm7250
+fi
+
+CC=clang
+LD=ld.lld
+CLANG_TRIPLE=aarch64-linux-gnu-
+POST_DEFCONFIG_CMDS="check_defconfig && update_config"
+
+function update_config() {
+  # Disable debugfs and cfi
+  ${KERNEL_DIR}/scripts/config --file ${OUT_DIR}/.config \
+    -d DEBUG_FS \
+    -d LTO \
+    -d LTO_CLANG \
+    -d CFI \
+    -d CFI_PERMISSIVE \
+    -d CFI_CLANG
+
+  (cd ${OUT_DIR} && \
+    make O=${OUT_DIR} CLANG_TRIPLE=${CLANG_TRIPLE} CROSS_COMPILE=${CROSS_COMPILE} "${TOOL_ARGS[@]}" ${MAKE_ARGS} olddefconfig)
+}
+
