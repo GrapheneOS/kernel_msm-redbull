@@ -49,8 +49,10 @@ cp out/arch/arm64/boot/{dtbo.img,Image.lz4} "$ROOT_DIR/device/google/${DEVICE}-k
 cp out/arch/arm64/boot/dts/google/qcom-base/lito.dtb "$ROOT_DIR/device/google/${DEVICE}-kernel"
 
 echo "TODO: disable LKM, copying kernel modules. modules in device kernel repo will be deleted"
-rm -v $ROOT_DIR/device/google/${DEVICE}-kernel/*.ko
+rm -fv $ROOT_DIR/device/google/${DEVICE}-kernel/*.ko
 cd out
 for i in $(find -name "*.ko"); do
 cp ${i} $ROOT_DIR/device/google/${DEVICE}-kernel/ -v
 done
+cp modules.order $ROOT_DIR/device/google/${DEVICE}-kernel/modules.load -v
+
