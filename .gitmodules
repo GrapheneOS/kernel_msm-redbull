@@ -7,3 +7,18 @@
 [submodule "drivers/staging/qca-wifi-host-cmn"]
 	path = drivers/staging/qca-wifi-host-cmn
 	url = https://android.googlesource.com/kernel/msm-modules/qca-wfi-host-cmn
+[submodule "techpack/camera"]
+	path = techpack/camera
+	url = https://android.googlesource.com/kernel/msm-extra/camera-kernel
+[submodule "techpack/dataipa"]
+	path = techpack/dataipa
+	url = https://android.googlesource.com/kernel/msm-extra/dataipa
+[submodule "techpack/display"]
+	path = techpack/display
+	url = https://android.googlesource.com/kernel/msm-extra/display-drivers
+[submodule "techpack/video"]
+	path = techpack/video
+	url = https://android.googlesource.com/kernel/msm-extra/video-driver
+[submodule "techpack/audio"]
+	path = techpack/audio
+	url = https://github.com/GrapheneOS/kernel_google_redbull_techpack_audio
