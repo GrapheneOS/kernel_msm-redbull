@@ -1,4 +1,4 @@
-KERNEL_DIR=private/msm-google
+KERNEL_DIR=redbull/private/msm-google
 
 . ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
 . ${ROOT_DIR}/${KERNEL_DIR}/build.config.sm8250.common

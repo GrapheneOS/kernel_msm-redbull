@@ -2,17 +2,17 @@
 DEFCONFIG=redbull_defconfig
 BUILD_INITRAMFS=1
 EXT_MODULES="
-private/msm-google-modules/wlan/qcacld-3.0
-private/msm-google-modules/touch/fts
-private/msm-google-modules/touch/sec
+redbull/private/msm-google-modules/wlan/qcacld-3.0
+redbull/private/msm-google-modules/touch/fts
+redbull/private/msm-google-modules/touch/sec
 "
 
 if [ -n "${BUILD_BOOT_IMG}" ]; then
 BUILD_INITRAMFS=1
 LZ4_RAMDISK=1
 MKBOOTIMG_PATH=tools/mkbootimg/mkbootimg.py
-GKI_RAMDISK_PREBUILT_BINARY=${ROOT_DIR}/prebuilts/boot-artifacts/ramdisks/ramdisk-aosp_arm64.img
-VENDOR_RAMDISK_BINARY=${ROOT_DIR}/prebuilts/boot-artifacts/ramdisks/vendor_ramdisk-bramble.img
+GKI_RAMDISK_PREBUILT_BINARY=${ROOT_DIR}/redbull/prebuilts/boot-artifacts/ramdisks/ramdisk-aosp_arm64.img
+VENDOR_RAMDISK_BINARY=${ROOT_DIR}/redbull/prebuilts/boot-artifacts/ramdisks/vendor_ramdisk-bramble.img
 KERNEL_BINARY=Image.lz4
 BOOT_IMAGE_HEADER_VERSION=3
 BASE_ADDRESS=0x00000000

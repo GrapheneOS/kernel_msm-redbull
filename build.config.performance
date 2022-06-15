@@ -1,4 +1,4 @@
-KERNEL_DIR=private/msm-google
+KERNEL_DIR=redbull/private/msm-google
 . ${ROOT_DIR}/${KERNEL_DIR}/build.config.common.clang
 POST_DEFCONFIG_CMDS="check_defconfig && update_perf_config"
 
