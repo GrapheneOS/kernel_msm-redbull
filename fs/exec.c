@@ -1734,6 +1734,10 @@ static int __do_execve_file(int fd, struct filename *filename,
 	struct files_struct *displaced;
 	int retval;
 
+#define FLAG_COMPAT_VA_39_BIT (1 << 30)
+	const int compat_va_39_bit = flags & FLAG_COMPAT_VA_39_BIT;
+	flags &= ~FLAG_COMPAT_VA_39_BIT; // flag validation fails when it sees an unknown flag
+
 	if (IS_ERR(filename))
 		return PTR_ERR(filename);
 
@@ -1806,6 +1810,8 @@ static int __do_execve_file(int fd, struct filename *filename,
 	retval = bprm_mm_init(bprm);
 	if (retval)
 		goto out_unmark;
+
+	bprm->mm->compat_va_39_bit = compat_va_39_bit;
 
 	bprm->argc = count(argv, MAX_ARG_STRINGS);
 	if ((retval = bprm->argc) < 0)
