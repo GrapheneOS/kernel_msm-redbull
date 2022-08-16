@@ -12,14 +12,15 @@ if [[ $DEVICE != redfin && $DEVICE != bramble ]]; then
 fi
 
 ROOT_DIR=$(realpath ../../..)
+LEGACY_DIR=$ROOT_DIR/kernel/prebuilts/legacy
 
 PATH="$ROOT_DIR/prebuilts/build-tools/linux-x86/bin:$PATH"
 PATH="$ROOT_DIR/prebuilts/build-tools/path/linux-x86:$PATH"
 PATH="$ROOT_DIR/kernel/prebuilts/build-tools/linux-x86/bin:$PATH"
-PATH="$ROOT_DIR/prebuilts/gas/linux-x86:$PATH"
-PATH="$ROOT_DIR/prebuilts/clang/host/linux-x86/clang-r416183b/bin:$PATH"
-PATH="$ROOT_DIR/prebuilts/misc/linux-x86/libufdt:$PATH"
-export LD_LIBRARY_PATH="$ROOT_DIR/prebuilts/clang/host/linux-x86/clang-r416183b/lib64:$LD_LIBRARY_PATH"
+PATH="$LEGACY_DIR/gas/linux-x86:$PATH"
+PATH="$LEGACY_DIR/clang/host/linux-x86/clang-r416183b/bin:$PATH"
+PATH="$LEGACY_DIR/misc/linux-x86/libufdt:$PATH"
+export LD_LIBRARY_PATH="$LEGACY_DIR/clang/host/linux-x86/clang-r416183b/lib64:$LD_LIBRARY_PATH"
 export DTC_EXT="$ROOT_DIR/kernel/prebuilts/build-tools/linux-x86/bin/dtc"
 export DTC_OVERLAY_TEST_EXT="$ROOT_DIR/kernel/prebuilts/build-tools/linux-x86/bin/ufdt_apply_overlay"
 
